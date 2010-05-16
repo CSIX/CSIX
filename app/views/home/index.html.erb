@@ -1,0 +1,22 @@
+<% title "Welcome to CSIX" %>
+<% if current_user %>
+	<p>Thank you for registering at CSIX</p>
+<% else %>
+	<p>If you haven't registered yet, please <%= link_to "create an account", new_user_path %></p>
+<% end %>
+<p>
+	This is just a test site with some basic functionality. I've put this up so you can play around with some working code and see how everything works. At the moment you can;
+</p>
+
+	<ul>
+		<li>Create an account</li>
+		<li>Log in</li>
+		<li>Log out</li>
+		<li>Edit your account information</li>
+		<li>Go between a page or two</li>
+	</ul>
+	
+<p>
+	The idea is that this will form the basis of the site, and that we build upon this to create our own site.<br />
+	Have a look around, there isn't all that much here, and if you want to change something. Feel free.
+</p>	
