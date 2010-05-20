@@ -17,9 +17,9 @@
 				<div id="nav_top">
 					<!-- The contents of this area change depending on whether the user is logged in or not.-->
 					<% if current_user # If the user is logged in %>
-						<% if permitted_to? :edit, @user %>
+						<% # if permitted_to? :edit, @user %>
 							<%= link_to current_user.username, edit_user_path(:current) %> | 
-						<% end %>
+						<% # end %>
 						<%= link_to "Logout", logout_path %>
 					<% else # If the user is not logged in %>
 						<%= link_to "Register", new_user_path %> | 

@@ -1,24 +1,22 @@
-# Filters added to this controller apply to all controllers in the application.
-# Likewise, all the methods added will be available for all controllers.
-
 class ApplicationController < ActionController::Base
-  helper :all # include all helpers, all the time
+  helper :all
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   filter_access_to :all
 
-  # Scrub sensitive parameters from your log
-  # filter_parameter_logging :password
   
   helper_method :current_user
   
   protected
   
+  # Flashes an error message and redirects to the previous page if a user does not have permission to see the current page
   def permission_denied
     flash[:error] = "Sorry, you're not allowed to access that page"
-    redirect_to :back
+    redirect_to root_url
   end
   
+  
   private
+  
   # Returns the session of the logged in user
   def current_user_session
       return @current_user_session if defined?(@current_user_session)
