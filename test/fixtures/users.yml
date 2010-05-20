@@ -1,9 +1,5 @@
 one:
-  username: MyString
-  email: MyString
-  password: MyString
-
-two:
-  username: MyString
-  email: MyString
-  password: MyString
+  username: Admin
+  email: Chris@Salij.org
+  password: 1234
+  password_confirmation: 1234

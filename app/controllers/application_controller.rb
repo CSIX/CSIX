@@ -4,11 +4,19 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  filter_access_to :all
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   
   helper_method :current_user
+  
+  protected
+  
+  def permission_denied
+    flash[:error] = "Sorry, you're not allowed to access that page"
+    redirect_to :back
+  end
   
   private
   # Returns the session of the logged in user
