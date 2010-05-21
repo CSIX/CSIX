@@ -1,8 +1,10 @@
 require 'test_helper'
 
 class HomeControllerTest < ActionController::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  
+  # Make sure the index actions is displayed when called
+  def test_should_get_index
+    get :index
+    assert_response :success
   end
 end

@@ -1,5 +1,15 @@
-one:
-  username: Admin
-  email: Chris@Salij.org
-  password: 1234
-  password_confirmation: 1234
+admin:
+    username: "admin"
+    email: "admin@csix.com"
+    crypted_password: "fc46f1a0752b47af739c4a00fcf28f67dd90485155207752d1795e849576738e56fc477295244742706fd95c5cf6d218a5de6cb863a28d05f0a4ef185fa3086a"
+    password_salt: "FUxSRfUYc23bX3Zf0PrH"
+    persistence_token: "283f1f5ef3119a8393385a5028453654d92e2e874d4e91383d8e021eaef0517dc4dd1fd4b5084caa750840207504191b614a6ffc194dbba09eed938445c1cd21"
+    role_id: 1
+    
+user:
+    username: "user"
+    email: "user@csix.com"
+    crypted_password: "a0afef7b3da7364813b68025ade9e908833ef93e5cf0d45fb67c2de42addb054187a64a458ca3cea01bb3bd32c4869129aecf94f880256b87fcac190b9bc687b"
+    password_salt: "LpDWIXK4z453NdX4TH3X"
+    persistence_token: "220cde734c1e9289bb6ee979458cf20d1237b6ac143b8382230f0af5d55a3d94376f7bf354b4054e75b51d8d9c26cc4acb778fc66b4a2996c58491740015ff3a"
+    role_id: 2
