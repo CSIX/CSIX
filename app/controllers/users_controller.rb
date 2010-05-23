@@ -1,14 +1,13 @@
 class UsersController < ApplicationController
-  
   def new
     @user = User.new
   end
   
   def create
-    # Creates a new user, with a default role of user
-    @user = User.new(params[:user], :role_id => Role.find_by_name("user").id)
+    @user = User.new(params[:user])
+    @user.role_id = Role.find_by_name("user").id
     if @user.save
-      flash[:notice] = "Registration Successfully"
+      flash[:notice] = "Registration Successful"
       redirect_to root_url
     else
       render :action => 'new'
