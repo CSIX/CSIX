@@ -1,3 +1,25 @@
-This project requires two Gems
-Authlogic
-Declarative Authentication
+To get this project up and running:
+
+If you have git installed, copy and paste the url given at the top of this page, into your command line It will look something like this "git@github.com:ChrisSalij/CSIX.git".
+This will add a folder to your current folder, call it "/CSIX/", and download the project into that folder.
+
+Type "cd CSIX" to move into the folder just created.
+
+If you don't have git installed, download the zip file and extract it.
+
+
+Type "rake gems:install" to install the gems;
++ Authlogic
++ Declarative Authentication
+
+Type "rake db:migrate" followed by "rake db:seed"
+This creates a database, and seeds it with some sample information. The information that it inserts can be seen in the console.
+
+Then type "script/server" to get the server running.
+You can see the site running at http://localhost:3000
+
+Everything should work fine now.
+
+
+
+If you want to develop the site and have your code committed to the final project, you will need to fork the code (at github.com), and follow the steps outline above. The only difference being the git url. It will be "git@github.com:*username*/CSIX.git", where *username* is you github username.
