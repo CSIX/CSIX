@@ -7,66 +7,51 @@ class UsersControllerTest < ActionController::TestCase
     get :new
     assert_response :success
   end
-    
-  def test_create_invalid
+
+  def test_should_create_user_invalid
     post :create, :user => {:username => "ben", :email => "hsdfh.com", :password => "benrocks", :password_confirmation => "benrocks"}
     assert_template 'new'
   end
-     
-  def test_create_valid
-    post :create, :user => {:username => "ben", :email => "hh@hh.com", :password => "benrocks", :password_confirmation => "benrocks"}
+
+  def test_create_valid_user
+    assert_difference('User.count') do
+      post :create, :user => {:username => "ben", :email => "hh@hh.com", :password => "benrocks", :password_confirmation => "benrocks"}
+    end
     assert_redirected_to root_url
   end
+
+  def test_should_show_user
+    get :show, :id => users(:admin).id
+    assert_response :success
+    assert_template :show
+  end
+
+  def test_should_get_edit
+    UserSession.create(:username => "admin", :password => "1234" )
+    get :edit, :id => User.find_by_username("admin").id
+    assert_response :success
+    assert_template :edit
+  end
+
+  def test_should__not_get_edit
+    get :edit, :id => User.find_by_username("admin").id
+    assert_redirected_to root_url
+  end
+
+  def test_should_update_user_valid
+    UserSession.create(:username => "admin", :password => "1234" )
+    put :update, :user => {:username => "admin", :email => "admin@salij.org", :password => "1234", :password_confirmation => "1234"}
+    assert_equal flash[:notice], "Successfully updated user info."
+    assert_nil flash[:error]
+    assert_template :edit
+  end
   
-     # 
-     # def test_edit
-     #   get :edit, :id => User.first
-     #   assert_template 'edit'
-     # end
-     
-     # def test_update_invalid
-     #       User.any_instance.stubs(:valid?).returns(false)
-     #       put :update, :id => User.first
-     #       assert_template 'edit'
-     #     end
-     #     
-     #     def test_update_valid
-     #       User.any_instance.stubs(:valid?).returns(true)
-     #       put :update, :id => User.first
-     #       assert_redirected_to root_url
-     #     end
-  
-  
-  
-  # def test_should_get_new
-  #      get :new
-  #      assert_response :success
-  #    end
-  # 
-  #    def test_should_create_user
-  #      firstCount = User.count
-  #      puts User.count
-  #      post :create, :user => { :username => "ben", :email => "hh@hh.com", :password => "benrocks", :password_confirmation => "benrocks" }
-  #      puts User.count
-  #      assert_difference User.count, firstCount
-  #      assert_redirected_to account_path
-  #    end
-  # 
-  #    def should_show_user
-  #      UserSession.create(users(:ben))
-  #      get :show
-  #      assert_response :success
-  #    end
-  # 
-  #    def should_get_edit
-  #      UserSession.create(users(:ben))
-  #      get :edit, :id => users(:ben).id
-  #      assert_response :success
-  #    end
-  # 
-  #    def test_should_update_user
-  #      UserSession.create(users(:ben))
-  #      put :update, :id => users(:ben).id, :user => { }
-  #      assert_redirected_to account_path
-  #    end
+  def test_should_update_user_invalid
+    UserSession.create(:username => "admin", :password => "1234" )
+    put :update, :user => {:username => "admin", :email => "admin@salij.org", :password => "134", :password_confirmation => "1224"}
+    assert_nil flash[:notice]
+    assert_equal flash[:error], "Sorry But something went wrong."
+    assert_template :edit
+  end
+
 end

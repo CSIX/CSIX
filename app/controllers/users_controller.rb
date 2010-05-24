@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
   def new
-    @user = User.new
+    if !current_user
+      @user = User.new
+    else
+      flash[:error] = "You already have an account."
+      redirect_to root_url
+    end
   end
-  
+
   def create
     @user = User.new(params[:user])
     @user.role_id = Role.find_by_name("user").id
@@ -13,18 +18,29 @@ class UsersController < ApplicationController
       render :action => 'new'
     end
   end
-  
+
   def edit
-    @user = current_user
+    if current_user.id == params[:id].to_i
+      @user = current_user
+    else
+      flash[:notice] = "Woah boy! Hold on there. You can't edit someone else's profile."
+      redirect_to root_url
+    end
   end
-  
+
   def update
     @user = current_user
     if @user.update_attributes(params[:user])
       flash[:notice] = "Successfully updated user info."
-      redirect_to root_url
+      render :action => :edit
     else
-      render :action => 'edit'
+      flash[:error] = "Sorry But something went wrong."
+      render :action => :edit
     end
   end
+  
+  def show
+    @user = User.find params[:id]
+  end
+  
 end
