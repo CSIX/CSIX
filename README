@@ -7,6 +7,11 @@ Type "cd CSIX" to move into the folder just created.
 
 If you don't have git installed, download the zip file and extract it.
 
+<strong>Theres an issue with Authlogic 2.1.4</strong>, the latest version of authlogic was released on teh 23rd of May and seems to fail on some systems. If you get a warning similar to := undefined method `singleton_class' for Authlogic".
+Then you need to uninstall Authlogic 2.1.4: "sudo gem uninstall authlogic"
+And you need to install the older version: "sudo gem install authlogic -v 2.1.3"
+
+I'll try to track down this error and see if its something that I can fix
 
 Type "rake gems:install" to install the gems;
 + Authlogic
