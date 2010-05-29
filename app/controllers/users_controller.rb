@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
   def new
     if !current_user
       @user = User.new
@@ -40,7 +41,12 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find params[:id]
+    if !User.find_by_id params[:id]
+      flash[:error] = "User does not exist"
+      redirect_to root_url 
+    else
+      @user = User.find params[:id]
+    end
   end
   
 end
