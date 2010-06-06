@@ -2,7 +2,9 @@
 To get this project up and running:
 
 ### Download the Project ###
-If you have git installed, copy and paste the url given at the top of this page, into your command line It will look something like this "git@github.com:CSIX/CSIX.git".
+If you have git installed, copy and paste the url given at the top of this page, into your command line It will look something like this "git clone git@github.com:*username*/CSIX.git".
+Where *username* is your github username
+
 This will add a folder to your current folder, call it "/CSIX/", and download the project into that folder.
 
 Type "cd CSIX" to move into the folder just created.
