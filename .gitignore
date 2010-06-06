@@ -3,3 +3,4 @@ log/*.log
 tmp/**/*
 script/*
 db/*.sqlite3
+.flashbake
